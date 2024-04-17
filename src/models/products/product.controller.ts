@@ -44,7 +44,6 @@ class ProductController {
     async getOne(req: AuthRequest, res: Response, next: NextFunction) {
         try {
             const id = parseInt(req.params.id);
-            console.log(id, "id")
             const product = await productService.getOne(id);
             res.status(HTTPStatus.OK).json({
                 message: 'Product fetched successfully',
@@ -58,7 +57,6 @@ class ProductController {
     async updateOne(req: AuthRequest, res: Response, next: NextFunction) {
         try {
             const id = parseInt(req.body.id);
-            console.log(id, "id")
             const productData = new ProductDto(req.body.name, req.body.description, req.body.price);
             const product = await productService.updateOne(id, productData);
             res.status(HTTPStatus.OK).json({

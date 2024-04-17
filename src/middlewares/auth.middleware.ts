@@ -17,16 +17,10 @@ const getAccessToken = (req: AuthRequest): string => {
             message: errorMessages.unAuthenticated,
         });
     }
-    // remove Bearer from token
     return authorization.startsWith('Bearer ') ? authorization.slice(7, authorization.length) : authorization
 };
 
 const getUserByPayload = async (userPayload: JwtPayload): Promise<User> => {
-    // if (!userPayload.id || validationRules.id().validate(userPayload.id).error) {
-    //     throw new Exception(HTTPStatus.Unauthorized, {
-    //         message: errorMessages.unAuthenticated,
-    //     });
-    // }
 
     const user: User | null = await userService.getOne({
         id: userPayload.id,
@@ -45,7 +39,6 @@ const getUserByPayload = async (userPayload: JwtPayload): Promise<User> => {
 export const authMiddleware = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
         const token = getAccessToken(req);
-        console.log('token--------->', token)
         if (!token) {
             throw new Exception(HTTPStatus.Unauthorized, {
                 message: errorMessages.unAuthenticated,

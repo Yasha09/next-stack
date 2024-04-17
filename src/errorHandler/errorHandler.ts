@@ -14,7 +14,6 @@ export const errorHandler = (
         res.status(err.status).send(err);
     } else {
         // eslint-disable-next-line no-console
-        console.error('errorHandler.err:', err);
         res.status(HTTPStatus.InternalServerError).send({ metaData: { message: errorMessages.internalServerError } });
     }
 };
