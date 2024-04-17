@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const configs_1 = __importDefault(require("../../../configs"));
 const exception_1 = require("../../../errorHandler/exception");
-const errorMessages_1 = __importDefault(require("../../../constants/errorMessages"));
+const errorMessages_1 = __importDefault(require("../../../common/constants/errorMessages"));
 const types_1 = require("../../../errorHandler/types");
 class AccessTokenModel {
     async create(user) {
@@ -33,6 +33,7 @@ class AccessTokenModel {
             });
         }
         catch (error) {
+            console.log('error--------->', error);
             throw new exception_1.Exception(types_1.HTTPStatus.Unauthorized, {
                 message: errorMessages_1.default.unAuthenticated,
             });

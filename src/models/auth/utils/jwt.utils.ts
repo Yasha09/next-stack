@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import {User} from "../../../entity/User.entity";
 import config from '../../../configs'
 import {Exception} from "../../../errorHandler/exception";
-import errorMessages from "../../../constants/errorMessages";
+import errorMessages from "../../../common/constants/errorMessages";
 import {HTTPStatus} from "../../../errorHandler/types";
 
 class AccessTokenModel {
@@ -35,6 +35,7 @@ class AccessTokenModel {
                 });
             });
         } catch (error) {
+            console.log('error--------->', error)
             throw new Exception(HTTPStatus.Unauthorized, {
                 message: errorMessages.unAuthenticated,
             });

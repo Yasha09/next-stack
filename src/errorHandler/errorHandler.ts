@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import {Exception} from "./exception";
 import {HTTPStatus} from "./types";
-import errorMessages from "../constants/errorMessages";
+import errorMessages from "../common/constants/errorMessages";
 
 export const errorHandler = (
     err: Error,

@@ -19,12 +19,11 @@ export const AppDataSource = new DataSource({
     password: DB_PASSWORD,
     database: DB_DATABASE,
 
-    synchronize: true,
+    synchronize: false,
     logging: NODE_ENV === "dev" ? false : false,
     entities: [User, Product, Order], // [User, Movie
-    migrations: [__dirname + "/migrations/*{.ts}"],
+    migrations: ["dist/migrations/*{.ts,.js}"],
     subscribers: [],
-
 });
 
 

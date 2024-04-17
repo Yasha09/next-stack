@@ -29,9 +29,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const dotenv = __importStar(require("dotenv"));
 const express_1 = __importDefault(require("express"));
+const yamljs_1 = __importDefault(require("yamljs"));
+const path_1 = __importDefault(require("path"));
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const data_source_1 = require("./data-source");
 const auth_router_1 = __importDefault(require("./models/auth/auth.router"));
 const errorHandler_1 = require("./errorHandler/errorHandler");
+const product_router_1 = __importDefault(require("./models/products/product.router"));
+const order_router_1 = __importDefault(require("./models/orders/order.router"));
 dotenv.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -39,7 +44,11 @@ app.use(express_1.default.urlencoded({ extended: true }));
 // app.use(errorHandler);
 const { PORT = 3000 } = process.env;
 app.use('/api/auth', auth_router_1.default);
+app.use('/api/product', product_router_1.default);
+app.use('/api/order', order_router_1.default);
 app.use(errorHandler_1.errorHandler);
+const swaggerDocument = yamljs_1.default.load(path_1.default.resolve(__dirname, '../swagger.yaml'));
+app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
 data_source_1.AppDataSource.initialize()
     .then(async () => {
     app.listen(PORT, () => {

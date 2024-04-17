@@ -1,10 +1,8 @@
-import bcrypt, {compare} from 'bcrypt';
 import {SignUpDto} from "./dto/signUp.dto";
 import userService from "../users/user.service";
 import {User} from "../../entity/User.entity";
-import {setPassword} from "./utils/bcrypt.utils";
+import {comparePasswords, setPassword} from "./utils/bcrypt.utils";
 import accessTokenModel from "./utils/jwt.utils";
-import {errorThrower} from "../../errorHandler/errorHandler";
 import {Exception} from "../../errorHandler/exception";
 
 
@@ -36,7 +34,7 @@ class AuthService {
             throw new Exception(400, {message: 'User not found'});
         }
 
-        const isPasswordCorrect: boolean = await compare(password, user.password);
+        const isPasswordCorrect: boolean = await comparePasswords(password, user.password);
 
         if (!isPasswordCorrect) {
             throw new Exception(400, {message: 'Invalid password'});

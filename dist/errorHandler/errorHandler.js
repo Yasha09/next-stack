@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.errorThrower = exports.errorHandler = void 0;
 const exception_1 = require("./exception");
 const types_1 = require("./types");
-const errorMessages_1 = __importDefault(require("../constants/errorMessages"));
+const errorMessages_1 = __importDefault(require("../common/constants/errorMessages"));
 const errorHandler = (err, req, res, 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 next) => {

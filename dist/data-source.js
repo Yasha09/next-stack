@@ -39,10 +39,10 @@ exports.AppDataSource = new typeorm_1.DataSource({
     username: DB_USER,
     password: DB_PASSWORD,
     database: DB_DATABASE,
-    synchronize: true,
+    synchronize: false,
     logging: NODE_ENV === "dev" ? false : false,
     entities: [User_entity_1.User, Product_entity_1.Product, Order_entity_1.Order], // [User, Movie
-    migrations: [__dirname + "/migrations/*{.ts}"],
+    migrations: ["dist/migrations/*{.ts,.js}"],
     subscribers: [],
 });
 // import 'dotenv/config';

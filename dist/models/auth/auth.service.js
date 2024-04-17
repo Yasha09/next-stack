@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const bcrypt_1 = require("bcrypt");
 const user_service_1 = __importDefault(require("../users/user.service"));
 const bcrypt_utils_1 = require("./utils/bcrypt.utils");
 const jwt_utils_1 = __importDefault(require("./utils/jwt.utils"));
@@ -26,7 +25,7 @@ class AuthService {
         if (!user) {
             throw new exception_1.Exception(400, { message: 'User not found' });
         }
-        const isPasswordCorrect = await (0, bcrypt_1.compare)(password, user.password);
+        const isPasswordCorrect = await (0, bcrypt_utils_1.comparePasswords)(password, user.password);
         if (!isPasswordCorrect) {
             throw new exception_1.Exception(400, { message: 'Invalid password' });
         }
