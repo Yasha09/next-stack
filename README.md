@@ -60,5 +60,5 @@ Orders
 - GET /orders/:id: Get order details by ID
 
 ## Testing
-Postman url I send via mail
+Postman - https://api.postman.com/collections/13857936-2314f45b-94b4-42e4-861f-c6487465bbdf?access_key=PMAT-01HVNR1002GGBXA31WB907CSZT
 - http://localhost:3000/api-docs (but only added /login for demonstration)
