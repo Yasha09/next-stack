@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a RESTful API service for managing a simple e-commerce system developed in Node.js with TypeScript, structured using the principles of Clean Architecture. It manages products and orders with JWT-based authentication.
+This is a RESTful API service for managing a simple e-commerce system developed in Node.js with TypeScript, structured using the principles of Clean Architecture. It manages products and orders with JWT-based authentication. Also include socket.io for real-time communication.
 
 
 ## Environment Setup
@@ -14,7 +14,13 @@ NodeJS        |  ^20.0
 NPM           | ^10.0
 PostgreSQL    | ^14.0
 
+## Running the app with Docker
 
+This application can also be run using Docker. Make sure you have Docker and Docker Compose installed on your system. Then, you can use the following command to start the application:
+
+```bash
+$ docker-compose up
+```
 ## Instaletion
 
 Run following command for installing all the dependencies locally.
