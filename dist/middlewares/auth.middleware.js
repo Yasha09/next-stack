@@ -16,15 +16,9 @@ const getAccessToken = (req) => {
             message: errorMessages_1.default.unAuthenticated,
         });
     }
-    // remove Bearer from token
     return authorization.startsWith('Bearer ') ? authorization.slice(7, authorization.length) : authorization;
 };
 const getUserByPayload = async (userPayload) => {
-    // if (!userPayload.id || validationRules.id().validate(userPayload.id).error) {
-    //     throw new Exception(HTTPStatus.Unauthorized, {
-    //         message: errorMessages.unAuthenticated,
-    //     });
-    // }
     const user = await user_service_1.default.getOne({
         id: userPayload.id,
     });
@@ -38,7 +32,6 @@ const getUserByPayload = async (userPayload) => {
 const authMiddleware = async (req, res, next) => {
     try {
         const token = getAccessToken(req);
-        console.log('token--------->', token);
         if (!token) {
             throw new exception_1.Exception(types_1.HTTPStatus.Unauthorized, {
                 message: errorMessages_1.default.unAuthenticated,

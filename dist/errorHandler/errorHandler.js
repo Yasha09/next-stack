@@ -15,7 +15,6 @@ next) => {
     }
     else {
         // eslint-disable-next-line no-console
-        console.error('errorHandler.err:', err);
         res.status(types_1.HTTPStatus.InternalServerError).send({ metaData: { message: errorMessages_1.default.internalServerError } });
     }
 };

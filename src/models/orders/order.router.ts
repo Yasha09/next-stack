@@ -7,12 +7,11 @@ const orderRouter = Router();
 
 orderRouter.use(authMiddleware);
 
-orderRouter.post('/', orderValidation.createOrder, orderController.createOrder);
+orderRouter
+    .post('/', orderValidation.createOrder, orderController.createOrder)
+    .get('/', orderController.getOrders);
 
 orderRouter.get('/:orderId', orderValidation.getOrder, orderController.getOrder);
-
-orderRouter.get('/', orderController.getOrders);
-
 
 
 

@@ -33,7 +33,6 @@ class AccessTokenModel {
             });
         }
         catch (error) {
-            console.log('error--------->', error);
             throw new exception_1.Exception(types_1.HTTPStatus.Unauthorized, {
                 message: errorMessages_1.default.unAuthenticated,
             });

@@ -4,12 +4,7 @@ import {Exception} from "../../errorHandler/exception";
 import {In} from "typeorm";
 
 class ProductService {
-    async createOne(productData: {
-        name: string,
-        description: string,
-        price: number,
-
-    }): Promise<Product> {
+    async createOne(productData: IProductCreateOne): Promise<IProduct> {
         const productRepository = AppDataSource.getRepository(Product);
 
         const isProductNameUnique = await productRepository.findOne({

@@ -13,7 +13,7 @@ class UserService {
         });
     }
 
-    async createOne(data: ISignupInterface): Promise<User> {
+    async createOne(data: ISignupRequest): Promise<User> {
         const userRepository = AppDataSource.getRepository(User);
 
         const user = userRepository.create(data);

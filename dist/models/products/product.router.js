@@ -9,9 +9,11 @@ const product_controller_1 = __importDefault(require("./product.controller"));
 const validation_1 = __importDefault(require("./validation"));
 const productRouter = (0, express_1.Router)();
 productRouter.use(auth_middleware_1.authMiddleware);
-productRouter.post('/', validation_1.default.create, product_controller_1.default.createOne);
-productRouter.get('/', validation_1.default.getAll, product_controller_1.default.getAll);
-productRouter.get('/:id', validation_1.default.getOne, product_controller_1.default.getOne);
-productRouter.patch('/', validation_1.default.update, product_controller_1.default.updateOne);
-productRouter.delete('/:id', validation_1.default.getOne, product_controller_1.default.deleteOne);
+productRouter
+    .post('/', validation_1.default.create, product_controller_1.default.createOne)
+    .get('/', validation_1.default.getAll, product_controller_1.default.getAll)
+    .patch('/', validation_1.default.update, product_controller_1.default.updateOne);
+productRouter
+    .get('/:id', validation_1.default.getOne, product_controller_1.default.getOne)
+    .delete('/:id', validation_1.default.getOne, product_controller_1.default.deleteOne);
 exports.default = productRouter;

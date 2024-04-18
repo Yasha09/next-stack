@@ -1,4 +1,5 @@
 import {Response, NextFunction, Request} from 'express';
+
 import {AuthRequest} from "../../common/interfaces";
 import orderService from "./order.service";
 import {HTTPStatus} from "../../errorHandler/types";
@@ -21,13 +22,15 @@ class OrderController {
     async getOrder(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const {orderId} = req.params;
-            const response = await orderService.getOrder(req.user.userId, Number(orderId));
+            const response: IOrderResponse | null = await orderService.getOrder(req.user.userId, Number(orderId));
+
             if (!response) {
                 res.status(HTTPStatus.NotFound).json({
                     message: 'Order not found'
                 });
                 return;
             }
+
             res.status(HTTPStatus.OK).json({
                 message: 'Order fetched successfully',
                 data: response

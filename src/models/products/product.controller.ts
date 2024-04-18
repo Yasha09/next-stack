@@ -10,8 +10,7 @@ import {getPageParams} from "./utils/pagination-params";
 class ProductController {
     async createOne(req: AuthRequest, res: Response, next: NextFunction) {
         try {
-            const productData = new ProductDto(req.body.name, req.body.description, req.body.price);
-            const product = await productService.createOne(productData);
+            const product = await productService.createOne(req.body);
             res.status(HTTPStatus.Created).json({
                 message: 'Product created successfully',
                 data: product

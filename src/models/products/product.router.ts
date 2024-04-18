@@ -7,14 +7,13 @@ const productRouter = Router();
 
 productRouter.use(authMiddleware);
 
-productRouter.post('/', productValidator.create, productController.createOne);
+productRouter
+    .post('/', productValidator.create, productController.createOne)
+    .get('/', productValidator.getAll, productController.getAll)
+    .patch('/', productValidator.update, productController.updateOne);
 
-productRouter.get('/', productValidator.getAll, productController.getAll);
-
-productRouter.get('/:id', productValidator.getOne, productController.getOne);
-
-productRouter.patch('/', productValidator.update, productController.updateOne);
-
-productRouter.delete('/:id', productValidator.getOne, productController.deleteOne);
+productRouter
+    .get('/:id', productValidator.getOne, productController.getOne)
+    .delete('/:id', productValidator.getOne, productController.deleteOne);
 
 export default productRouter;

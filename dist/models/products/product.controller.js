@@ -10,8 +10,7 @@ const pagination_params_1 = require("./utils/pagination-params");
 class ProductController {
     async createOne(req, res, next) {
         try {
-            const productData = new productDto_1.ProductDto(req.body.name, req.body.description, req.body.price);
-            const product = await product_service_1.default.createOne(productData);
+            const product = await product_service_1.default.createOne(req.body);
             res.status(types_1.HTTPStatus.Created).json({
                 message: 'Product created successfully',
                 data: product
@@ -42,7 +41,6 @@ class ProductController {
     async getOne(req, res, next) {
         try {
             const id = parseInt(req.params.id);
-            console.log(id, "id");
             const product = await product_service_1.default.getOne(id);
             res.status(types_1.HTTPStatus.OK).json({
                 message: 'Product fetched successfully',
@@ -56,7 +54,6 @@ class ProductController {
     async updateOne(req, res, next) {
         try {
             const id = parseInt(req.body.id);
-            console.log(id, "id");
             const productData = new productDto_1.ProductDto(req.body.name, req.body.description, req.body.price);
             const product = await product_service_1.default.updateOne(id, productData);
             res.status(types_1.HTTPStatus.OK).json({
