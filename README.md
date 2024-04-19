@@ -66,5 +66,5 @@ Orders
 - GET /orders/:id: Get order details by ID
 
 ## Testing
-Postman - https://api.postman.com/collections/13857936-2314f45b-94b4-42e4-861f-c6487465bbdf?access_key=PMAT-01HVNR1002GGBXA31WB907CSZT
+Postman - You can use Postman to test the API endpoints. The Postman collection is available in the `nest-stack.postman_collection.json` file.
 - http://localhost:3000/api-docs (but only added /login for demonstration)
